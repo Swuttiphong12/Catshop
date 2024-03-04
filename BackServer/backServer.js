@@ -120,6 +120,7 @@ const orderDetails = sequelize.define('orderDetails', {
 
 sequelize.sync();
 
+//cats Table
 app.get('/cats' ,(req ,res) => {
     Cat.findAll().then(cats => {
         res.json(cats);
@@ -165,11 +166,72 @@ app.put('/cats/:id' , (req ,res) => {
 });
 
 app.delete('/cats/:id' ,(req ,res) => {
-    Book.findByPk(req.params.id).then(cat => {
+    Cat.findByPk(req.params.id).then(cat => {
         if(!cat) {
             res.status(404).send('Cat not found');
         }else {
             cat.destroy().then(() => {
+                res.send({});
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+//customers Table
+app.get('/customers' ,(req ,res) => {
+    Customers.findAll().then(customers => {
+        res.json(customers);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.get('/customers/:id' ,(req,res) => {
+    Customers.findByPk(req.params.id).then(customer => {
+        if(!customer) {
+            res.status(404).send('Customer not found');
+        }else {
+            res.json(customer);
+        }
+    }).catch (err => {
+        res.status(500).send(err);
+    });
+});
+
+app.post('/customers' ,(req ,res) => {
+    Customers.create(req.body).then(customer => {
+        res.send(customer);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.put('/customers/:id' , (req ,res) => {
+    Customers.findByPk(req.params.id).then(customer => {
+        if(!customer) {
+            res.status(404).send('Cat not found');
+        }else {
+            cat.update(req.body).then(() => {
+                res.send(customer);
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.delete('/customers/:id' ,(req ,res) => {
+    Customers.findByPk(req.params.id).then(customer => {
+        if(!customer) {
+            res.status(404).send('Customer not found');
+        }else {
+            customer.destroy().then(() => {
                 res.send({});
             }).catch(err => {
                 res.status(500).send(err);
