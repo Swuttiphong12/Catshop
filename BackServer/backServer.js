@@ -46,7 +46,7 @@ const Cat = sequelize.define('cat', {
     }
 });
 
-const Customers = sequelize.define('customers', {
+const Customers = sequelize.define('customer', {
     customer_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -94,7 +94,7 @@ const order = sequelize.define('order', {
     }
 });
 
-const orderDetails = sequelize.define('orderDetails', {
+const OrderDetails = sequelize.define('orderDetails', {
     detail_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -120,7 +120,7 @@ const orderDetails = sequelize.define('orderDetails', {
 
 sequelize.sync();
 
-//cats Table
+//Cats Table
 app.get('/cats' ,(req ,res) => {
     Cat.findAll().then(cats => {
         res.json(cats);
@@ -181,7 +181,7 @@ app.delete('/cats/:id' ,(req ,res) => {
     });
 });
 
-//customers Table
+//Customers Table
 app.get('/customers' ,(req ,res) => {
     Customers.findAll().then(customers => {
         res.json(customers);
@@ -232,6 +232,67 @@ app.delete('/customers/:id' ,(req ,res) => {
             res.status(404).send('Customer not found');
         }else {
             customer.destroy().then(() => {
+                res.send({});
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+//Order Table
+app.get('/orders' ,(req ,res) => {
+    order.findAll().then(orders => {
+        res.json(orders);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.get('/orders/:id' ,(req,res) => {
+    order.findByPk(req.params.id).then(order => {
+        if(!order) {
+            res.status(404).send('Order not found');
+        }else {
+            res.json(order);
+        }
+    }).catch (err => {
+        res.status(500).send(err);
+    });
+});
+
+app.post('/orders' ,(req ,res) => {
+    order.create(req.body).then(order => {
+        res.send(order);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.put('/orders/:id' , (req ,res) => {
+    order.findByPk(req.params.id).then(order => {
+        if(!order) {
+            res.status(404).send('Order not found');
+        }else {
+            order.update(req.body).then(() => {
+                res.send(order);
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.delete('/orders/:id' ,(req ,res) => {
+    order.findByPk(req.params.id).then(order => {
+        if(!order) {
+            res.status(404).send('Order not found');
+        }else {
+            order.destroy().then(() => {
                 res.send({});
             }).catch(err => {
                 res.status(500).send(err);
