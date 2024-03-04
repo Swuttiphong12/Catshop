@@ -303,5 +303,66 @@ app.delete('/orders/:id' ,(req ,res) => {
     });
 });
 
+//orderDetails Table
+app.get('/orderDetails' ,(req ,res) => {
+    OrderDetails.findAll().then(orderDetails => {
+        res.json(orderDetails);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.get('/orderDetails/:id' ,(req,res) => {
+    OrderDetails.findByPk(req.params.id).then(orderDetails => {
+        if(!orderDetails) {
+            res.status(404).send('OrderDetail not found');
+        }else {
+            res.json(orderDetails);
+        }
+    }).catch (err => {
+        res.status(500).send(err);
+    });
+});
+
+app.post('/orderDetails' ,(req ,res) => {
+    OrderDetails.create(req.body).then(orderDetails => {
+        res.send(orderDetails);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.put('/orderDetails/:id' , (req ,res) => {
+    OrderDetails.findByPk(req.params.id).then(orderDetails => {
+        if(!orderDetails) {
+            res.status(404).send('OrderDetail not found');
+        }else {
+            orderDetails.update(req.body).then(() => {
+                res.send(orderDetails);
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.delete('/orderDetails/:id' ,(req ,res) => {
+    OrderDetails.findByPk(req.params.id).then(orderDetails => {
+        if(!orderDetails) {
+            res.status(404).send('OrderDetail not found');
+        }else {
+            orderDetails.destroy().then(() => {
+                res.send({});
+            }).catch(err => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port ,() => console.log(`Listening on port ${port}...`));
