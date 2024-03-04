@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "axios": "^1.6.7",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "sequelize": "^6.37.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.0.2"
+  },
+  "name": "catshop",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "scripts": {
+    "start": "node backServer.js",
+    "format": "prettier --write *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swuttiphong12/Catshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swuttiphong12/Catshop/issues"
+  },
+  "homepage": "https://github.com/Swuttiphong12/Catshop#readme"
+}
