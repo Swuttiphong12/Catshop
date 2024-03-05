@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(__dirname + '/views'));
 
+app.get("/" , async(req ,res) => {
+    res.render("Cat/login.ejs");
+})
+
 //Cat Table
 app.get("/cats/", async (req, res) => {
     try{
