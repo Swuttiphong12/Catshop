@@ -46,12 +46,12 @@
             <td><%= cats[i].availability %></td>
             <td>
                 <a href="/cat/<%= cats[i].cat_id %>">View</a>
-                <a href="/update/<%= cats[i].cat_id %>">Edit</a>
-                <a href="/delete/<%= cats[i].cat_id %>">Delete</a>
+                <a href="/cats/update/<%= cats[i].cat_id %>">Edit</a>
+                <a href="/cats/delete/<%= cats[i].cat_id %>">Delete</a>
             </td>
         </tr>
         <% } %>
     </table>
-    <a href="/create">Add New Cat</a>
+    <a href="/cats/create">Add New Cat</a>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Order</h1>
+    <table>
+        <tr>
+            <th>Customer Id</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            
+        </tr>
+        <% for (var i = 0; i < orders.length; i++) {%>
+        <tr>
+            <td><%= orders[i].customer_id %></td>
+            <td><%= orders[i].order_date %></td>
+            <td><%= orders[i].total_amount %></td>
+            <td>
+                <a href="/order/<%= orders[i].order_id %>">View</a>
+                <a href="/update/<%= orders[i].order_id %>">Edit</a>
+                <a href="/delete/<%= orders[i].order_id %>">Delete</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/create">Create New Order</a>
+</body>
+</html>

@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(__dirname + '/views'));
 
-app.get("/", async (req, res) => {
+//Cat Table
+app.get("/cats/", async (req, res) => {
     try{
         const response = await axios.get(base_url + '/cats');
         res.render("Cat/cats", {cats: response.data});
@@ -32,23 +33,23 @@ app.get("/cat/:id", async (req, res) => {
     }
 });
 
-app.get("/create", (req, res) => {
+app.get("/cats/create", (req, res) => {
     res.render("Cat/create");
 });
 
-app.post("/create", async (req, res) => {
+app.post("/cats/create", async (req, res) => {
     try{
         const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
                     color: req.body.color, price: req.body.price, availability: req.body.availability};
         await axios.post(base_url + '/cats/', data);
-        res.redirect("/");
+        res.redirect("/cats/");
     }catch (err){
         console.error(err);
         res.status(500).send('Error');
     }
 });
 
-app.get("/update/:id", async (req, res) => {
+app.get("/cats/update/:id", async (req, res) => {
     try{
     const response = await axois.get(
         base_url + '/cats/' + req.params.id);
@@ -59,11 +60,81 @@ app.get("/update/:id", async (req, res) => {
     }
 });
 
-app.post("/update/:id", async (req, res) => {
+app.post("/cats/update/:id", async (req, res) => {
     try{
         const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
             color: req.body.color, price: req.body.price, availability: req.body.availability};
         await axios.put(base_url + '/cats/' + req.params.id, data);
+        res.redirect("/cats/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/cats/delete/:id", async (req, res) => {
+    try{
+        await axios.delete(base_url + '/cats/' + req.params.id);
+        res.redirect("/cats/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+//Customer Table
+app.get("/customers", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/customers');
+        res.render("Customer/customers", {customers: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error')
+    }
+});
+
+app.get("/customer/:id", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/customers/' + req.params.id);
+        res.render("Customer/customer", { customer: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("customer/create", (req, res) => {
+    res.render("Customer/create");
+});
+
+app.post("/create", async (req, res) => {
+    try{
+        const customerData = {username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName,
+            email: req.body.email, phoneNumber: req.body.phoneNumber};
+        await axios.post(base_url + '/customers/', customerData);
+        res.redirect("/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/update/:id", async (req, res) => {
+    try{
+    const response = await axois.get(
+        base_url + '/customers/' + req.params.id);
+        res.render("Customer/update", { customer: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.post("/update/:id", async (req, res) => {
+    try{
+        const customerData = {username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName,
+            email: req.body.email, phoneNumber: req.body.phoneNumber};
+        await axios.put(base_url + '/customers/' + req.params.id, customerData);
         res.redirect("/");
     }catch (err){
         console.error(err);
@@ -73,7 +144,7 @@ app.post("/update/:id", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
     try{
-        await axios.delete(base_url + '/cats/' + req.params.id);
+        await axios.delete(base_url + '/customers/' + req.params.id);
         res.redirect("/");
     }catch (err){
         console.error(err);

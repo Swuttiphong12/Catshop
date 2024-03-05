@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Customer Id<%= order.customer_id %></h1>
+    <p>Order Date: <%= order.order_date %></p>
+    <p>Total Amount: <%= order.total_amount %></p>
+    <a href="/update/<%= order.order_id %>">Edit</a>
+    <a href="/delete/<%= order.order_id %>">Delete</a>
+    <a href="/">Back to List</a>
+</body>
+</html>

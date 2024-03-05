@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Customers</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phonenumber</th>
+        </tr>
+        <% for (var i = 0; i < customers.length; i++) {%>
+        <tr>
+            <td><%= customers[i].username %></td>
+            <td><%= customers[i].firstName %></td>
+            <td><%= customers[i].lastName %></td>
+            <td><%= customers[i].email %></td>
+            <td><%= customers[i].phoneNumber %></td>
+            <td>
+                <a href="/customer/<%= customers[i].customer_id %>">View</a>
+                <a href="/update/<%= customers[i].customer_id %>">Edit</a>
+                <a href="/delete/<%= customers[i].customer_id %>">Delete</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/create">Create New Customer</a>
+</body>
+</html>

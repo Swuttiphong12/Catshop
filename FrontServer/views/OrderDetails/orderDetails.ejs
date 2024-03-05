@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderDetails</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>orderDetails</h1>
+    <table>
+        <tr>
+            <th>Quanity</th>
+            <th>unitPrice</th>
+            
+        </tr>
+        <% for (var i = 0; i < orderDetails.length; i++) {%>
+        <tr>
+            <td><%= orderDetails[i].quantity %></td>
+            <td><%= orderDetails[i].unitPrice %></td>
+            
+            <td>
+                <a href="/orderDetail/<%= orderDetails[i].detail_id %>">View</a>
+                <a href="/update/<%= orderDetails[i].detail_id %>">Edit</a>
+                <a href="/delete/<%= orderDetails[i].detail_id %>">Delete</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/create">Create Order Details</a>
+</body>
+</html>

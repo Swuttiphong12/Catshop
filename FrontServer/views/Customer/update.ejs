@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Customer</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Update Customer</h1>
+    <form method="post" action="/update/<%= customer.customer_id %>">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<%= customer.username %>">
+        <br>
+        <label for="firstName">Firstname:</label>
+        <input type="text" id="firstName" name="firstName" value="<%= customer.firstName %>">
+        <br>
+        <label for="lastName">Lastname:</label>
+        <input type="text" id="lastName" name="lastName" value="<%= customer.lastName %>">
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="<%= customer.email %>">
+        <br>
+        <label for="phoneNumber">Phonenumber:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" value="<%= customer.phoneNumber %>">
+        <br>
+        <input type="submit" value="Update">
+    </form>
+    <a href="/customer/<%= customer.customer_id%>">View</a>
+    <a href="/delete/<%= customer.customer_id%>">Delete</a>
+    <a href="/">Back to List</a>
+</body>
+</html>

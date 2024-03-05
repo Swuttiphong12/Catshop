@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Update Order</h1>
+    <form method="post" action="/update/<%= order.order_id %>">
+        <label for="customer_id">Customer Id:</label>
+        <input type="text" id="customer_id" name="customer_id" value="<%= order.customer_id %>">
+        <br>
+        <label for="order_date">Order Date:</label>
+        <input type="text" id="order_date" name="order_date" value="<%= order.order_date %>">
+        <br>
+        <label for="total_amount">Total Amount:</label>
+        <input type="text" id="total_amount" name="total_amount" value="<%= order.total_amount %>">
+        <br>
+        
+        <input type="submit" value="Update">
+    </form>
+    <a href="/order/<%= order.order_id%>">View</a>
+    <a href="/delete/<%= order.order_id%>">Delete</a>
+    <a href="/">Back to List</a>
+</body>
+</html>
