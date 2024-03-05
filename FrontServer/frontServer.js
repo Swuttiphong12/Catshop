@@ -152,6 +152,145 @@ app.get("/customers/delete/:id", async (req, res) => {
     }
 });
 
+//Order Table
+app.get("/orders/", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/orders');
+        res.render("Order/orders", {orders: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error')
+    }
+});
+
+app.get("/order/:id", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/orders/' + req.params.id);
+        res.render("Order/order", { order: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orders/create", (req, res) => {
+    res.render("Order/create");
+});
+
+app.post("/orders/create", async (req, res) => {
+    try{
+        const orderData = {customer_id: req.body.customer_id, order_date: req.body.order_date, total_amount: req.body.total_amount};
+        await axios.post(base_url + '/orders/', orderData);
+        res.redirect("/orders/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orders/update/:id", async (req, res) => {
+    try{
+    const response = await axois.get(
+        base_url + '/orders/' + req.params.id);
+        res.render("Order/update", { order: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.post("/orders/update/:id", async (req, res) => {
+    try{
+        const orderData = {customer_id: req.body.customer_id, order_date: req.body.order_date, total_amount: req.body.total_amount};
+        await axios.put(base_url + '/orders/' + req.params.id, orderData);
+        res.redirect("/orders/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orders/delete/:id", async (req, res) => {
+    try{
+        await axios.delete(base_url + '/orders/' + req.params.id);
+        res.redirect("/orders/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+
+//OrderDetails Table
+app.get("/orderdetails/", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/orderDetails');
+        res.render("Orderdetails/orderdetails", {orderDetails: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error')
+    }
+});
+
+app.get("/orderdetail/:id", async (req, res) => {
+    try{
+        const response = await axios.get(base_url + '/orderDetails/' + req.params.id);
+        res.render("OrderDetails/orderdetail", { orderDetail: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orderdetails/create", (req, res) => {
+    res.render("Cat/create");
+});
+
+app.post("/orderdetails/create", async (req, res) => {
+    try{
+        const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
+                    color: req.body.color, price: req.body.price, availability: req.body.availability};
+        await axios.post(base_url + '/orderdetails/', data);
+        res.redirect("/orderdetails/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orderdetails/update/:id", async (req, res) => {
+    try{
+    const response = await axois.get(
+        base_url + '/orderdetails/' + req.params.id);
+        res.render("OrderDetails/update", { orderDetail: response.data});
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.post("/orderdetails/update/:id", async (req, res) => {
+    try{
+        const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
+            color: req.body.color, price: req.body.price, availability: req.body.availability};
+        await axios.put(base_url + '/orderdetails/' + req.params.id, data);
+        res.redirect("/orderdetails/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
+app.get("/orderdetails/delete/:id", async (req, res) => {
+    try{
+        await axios.delete(base_url + '/orderdetails/' + req.params.id);
+        res.redirect("/orderdetails/");
+    }catch (err){
+        console.error(err);
+        res.status(500).send('Error');
+    }
+});
+
 app.listen(5500, () => {
     console.log('Server started on port 5500');
 });

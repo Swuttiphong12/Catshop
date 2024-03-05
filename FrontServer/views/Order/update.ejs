@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Update Order</h1>
-    <form method="post" action="/update/<%= order.order_id %>">
+    <form method="post" action="/orders/update/<%= order.order_id %>">
         <label for="customer_id">Customer Id:</label>
         <input type="text" id="customer_id" name="customer_id" value="<%= order.customer_id %>">
         <br>
@@ -22,7 +22,7 @@
         <input type="submit" value="Update">
     </form>
     <a href="/order/<%= order.order_id%>">View</a>
-    <a href="/delete/<%= order.order_id%>">Delete</a>
-    <a href="/">Back to List</a>
+    <a href="/orders/delete/<%= order.order_id%>">Delete</a>
+    <a href="/orders/">Back to List</a>
 </body>
 </html>

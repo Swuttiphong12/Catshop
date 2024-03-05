@@ -9,8 +9,8 @@
 <body>
     <h1>Quanity<%= orderDetail.quantity %></h1>
     <p>unitPrice: <%= orderDetail.unitPrice %></p>
-    <a href="/update/<%= orderDetail.detail_id %>">Edit</a>
-    <a href="/delete/<%= orderDetail.detail_id %>">Delete</a>
-    <a href="/">Back to List</a>
+    <a href="/orderdetails/update/<%= orderDetail.detail_id %>">Edit</a>
+    <a href="/orderdetails/delete/<%= orderDetail.detail_id %>">Delete</a>
+    <a href="/orderdetails/">Back to List</a>
 </body>
 </html>

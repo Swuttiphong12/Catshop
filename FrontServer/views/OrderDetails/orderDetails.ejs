@@ -21,12 +21,12 @@
             
             <td>
                 <a href="/orderDetail/<%= orderDetails[i].detail_id %>">View</a>
-                <a href="/update/<%= orderDetails[i].detail_id %>">Edit</a>
-                <a href="/delete/<%= orderDetails[i].detail_id %>">Delete</a>
+                <a href="/orderdetails/update/<%= orderDetails[i].detail_id %>">Edit</a>
+                <a href="/orderdetails/delete/<%= orderDetails[i].detail_id %>">Delete</a>
             </td>
         </tr>
         <% } %>
     </table>
-    <a href="/create">Create Order Details</a>
+    <a href="/orderdetails/create">Create Order Details</a>
 </body>
 </html>
