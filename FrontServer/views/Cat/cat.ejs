@@ -5,10 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+    <script>
+        window.onload = function() {
+            var ageElement = document.getElementById('catAge');
+            var age = parseInt(ageElement.innerText);
+            if (age > 12) {
+                var years = Math.floor(age / 12);
+                var months = age % 12;
+                if (months === 0) {
+                    ageElement.innerText = years + " years";
+                } else {
+                    ageElement.innerText = years + " years " + months + " months";
+                }
+            } else {
+                ageElement.innerText = age + " months";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Name<%= cat.name %></h1>
+    <h1>Name: <%= cat.name %></h1>
     <p>Breed: <%= cat.breed %></p>
+    <p>Age: <span id="catAge"><%= cat.age %></span></p>
+    <p>Color: <%= cat.color %></p>
+    <p>Price: <%= cat.price %></p>
+    <p>Availability: <%= cat.availability %></p>
     <a href="/update/<%= cat.cat_id %>">Edit</a>
     <a href="/delete/<%= cat.cat_id %>">Delete</a>
     <a href="/">Back to List</a>

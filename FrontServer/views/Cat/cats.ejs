@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+    <script>
+        window.onload = function() {
+            var cats = document.querySelectorAll('.cat-age');
+            cats.forEach(function(cat) {
+                var age = parseInt(cat.innerText);
+                if (age >= 12) {
+                    var years = Math.floor(age / 12);
+                    var months = age % 12;
+                    if (months === 0) {
+                        cat.innerText = years + " years";
+                    } else {
+                        cat.innerText = years + " years " + months + " months";
+                    }
+                } else {
+                    cat.innerText = age + " months";
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Cats</h1>
@@ -21,7 +40,7 @@
         <tr>
             <td><%= cats[i].name %></td>
             <td><%= cats[i].breed %></td>
-            <td><%= cats[i].age %></td>
+            <td class="cat-age"><%= cats[i].age %></td>
             <td><%= cats[i].color %></td>
             <td><%= cats[i].price %></td>
             <td><%= cats[i].availability %></td>
