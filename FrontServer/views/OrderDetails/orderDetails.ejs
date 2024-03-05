@@ -5,8 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>orderDetails</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+    <style>
+
+        body {
+        background-color: #f8e0ab;
+        margin: 0;
+        padding: 0;
+        }
+            /* Navbar Container */
+    .navbar {
+        overflow: hidden;
+        background-color: rgb(243, 156, 74);
+      }
+    
+      /* Navbar Links */
+      .navbar a {
+        float: left;
+        display: block;
+        color: #0e0c0cd3;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: bold; /* เพิ่ม bold */
+        font-size: 20px; /* เพิ่มขนาด */
+      }
+    
+      /* Navbar Links on Hover */
+      .navbar a:hover {
+        background-color: #ddd;
+        color: rgb(243, 156, 74);
+      }
+    
+      /* Clear floats */
+      .navbar::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    
+      .bar {
+            background-color: #ddd;
+            height: 20px; /* กำหนดความสูงของแท่ง */
+            margin-top: 5px; /* ระยะห่างด้านบน */
+        }
+        </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="/cats">Cats</a>
+        <a href="/customers">Customers</a>
+        <a href="/orders">Orders</a>
+        <a href="/orderdetails">Orderdetails</a>
+      </div>
     <h1>orderDetails</h1>
     <table>
         <tr>
