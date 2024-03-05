@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/views'));
 app.get("/", async (req, res) => {
     try{
         const response = await axios.get(base_url + '/cats');
-        res.render("cats", {cats: response.data});
+        res.render("Cat/cats", {cats: response.data});
     }catch (err){
         console.error(err);
         res.status(500).send('Error')
@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
 app.get("/cat/:id", async (req, res) => {
     try{
         const response = await axios.get(base_url + '/cats/' + req.params.id);
-        res.render("cat", { cat: response.data});
+        res.render("Cat/cat", { cat: response.data});
     }catch (err){
         console.error(err);
         res.status(500).send('Error');
@@ -33,7 +33,7 @@ app.get("/cat/:id", async (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-    res.render("create");
+    res.render("Cat/create");
 });
 
 app.post("/create", async (req, res) => {
@@ -52,7 +52,7 @@ app.get("/update/:id", async (req, res) => {
     try{
     const response = await axois.get(
         base_url + '/cats/' + req.params.id);
-        res.render("update", { cat: response.data});
+        res.render("Cat/update", { cat: response.data});
     }catch (err){
         console.error(err);
         res.status(500).send('Error');
