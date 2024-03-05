@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Cats</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Color</th>
+            <th>Price</th>
+            <th>Availability</th>
+        </tr>
+        <% for (var i = 0; i < cats.length; i++) {%>
+        <tr>
+            <td><%= cats[i].name %></td>
+            <td><%= cats[i].breed %></td>
+            <td><%= cats[i].age %></td>
+            <td><%= cats[i].color %></td>
+            <td><%= cats[i].price %></td>
+            <td><%= cats[i].availability %></td>
+            <td>
+                <a href="/cat/<%= cats[i].cat_id %>">View</a>
+                <a href="/update/<%= cats[i].cat_id %>">Edit</a>
+                <a href="/delete/<%= cats[i].cat_id %>">Delete</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/create">Create New Cat</a>
+</body>
+</html>

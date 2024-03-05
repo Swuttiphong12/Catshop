@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Cat</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+</head>
+<body>
+    <h1>Update cat</h1>
+    <form method="post" action="/update/<%= cat.cat_id %>">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= cat.name %>">
+        <br>
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" value="<%= cat.breed %>">
+        <br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" value="<%= cat.age %>">
+        <br>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" value="<%= cat.color %>">
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="<%= cat.price %>">
+        <br>
+        <label for="availability">Availability:</label>
+        <input type="text" id="availability" name="availability" value="<%= cat.availability %>">
+        <br>
+        <input type="submit" value="Update">
+    </form>
+    <a href="/cat/<%= cat.cat_id%>">View</a>
+    <a href="/delete/<%= cat.cat_id%>">Delete</a>
+    <a href="/">Back to List</a>
+</body>
+</html>

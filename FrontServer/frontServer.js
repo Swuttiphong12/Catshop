@@ -4,13 +4,13 @@ const app = express();
 var bodyParser = require('body-parser');
 const { default: axios } = require('axios');
 
-const base_url = "http://localhost:5500";
+const base_url = "http://localhost:3000";
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 app.get("/", async (req, res) => {
     try{
@@ -24,7 +24,7 @@ app.get("/", async (req, res) => {
 
 app.get("/cat/:id", async (req, res) => {
     try{
-        const response = await axios.get(base_url + '/cats' + req.params.id);
+        const response = await axios.get(base_url + '/cats/' + req.params.id);
         res.render("cat", { cat: response.data});
     }catch (err){
         console.error(err);
@@ -40,7 +40,7 @@ app.post("/create", async (req, res) => {
     try{
         const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
                     color: req.body.color, price: req.body.price, availability: req.body.availability};
-        await axios.post(base_url + '/cats', data);
+        await axios.post(base_url + '/cats/', data);
         res.redirect("/");
     }catch (err){
         console.error(err);
@@ -51,7 +51,7 @@ app.post("/create", async (req, res) => {
 app.get("/update/:id", async (req, res) => {
     try{
     const response = await axois.get(
-        base_url + '/cats' + req.params.id);
+        base_url + '/cats/' + req.params.id);
         res.render("update", { cat: response.data});
     }catch (err){
         console.error(err);
@@ -63,7 +63,7 @@ app.post("/update/:id", async (req, res) => {
     try{
         const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
             color: req.body.color, price: req.body.price, availability: req.body.availability};
-        await axios.put(base_url + '/cats' + req.params.id, data);
+        await axios.put(base_url + '/cats/' + req.params.id, data);
         res.redirect("/");
     }catch (err){
         console.error(err);
@@ -73,7 +73,7 @@ app.post("/update/:id", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
     try{
-        await axios.delete(base_url + '/cats' + req.params.id);
+        await axios.delete(base_url + '/cats/' + req.params.id);
         res.redirect("/");
     }catch (err){
         console.error(err);
