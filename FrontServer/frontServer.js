@@ -83,7 +83,7 @@ app.get("/cats/delete/:id", async (req, res) => {
 });
 
 //Customer Table
-app.get("/customers", async (req, res) => {
+app.get("/customers/", async (req, res) => {
     try{
         const response = await axios.get(base_url + '/customers');
         res.render("Customer/customers", {customers: response.data});
@@ -103,23 +103,23 @@ app.get("/customer/:id", async (req, res) => {
     }
 });
 
-app.get("customer/create", (req, res) => {
+app.get("/customers/create", (req, res) => {
     res.render("Customer/create");
 });
 
-app.post("/create", async (req, res) => {
+app.post("/customers/create", async (req, res) => {
     try{
         const customerData = {username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName,
             email: req.body.email, phoneNumber: req.body.phoneNumber};
         await axios.post(base_url + '/customers/', customerData);
-        res.redirect("/");
+        res.redirect("/customers/");
     }catch (err){
         console.error(err);
         res.status(500).send('Error');
     }
 });
 
-app.get("/update/:id", async (req, res) => {
+app.get("/customers/update/:id", async (req, res) => {
     try{
     const response = await axois.get(
         base_url + '/customers/' + req.params.id);
@@ -130,22 +130,22 @@ app.get("/update/:id", async (req, res) => {
     }
 });
 
-app.post("/update/:id", async (req, res) => {
+app.post("/customers/update/:id", async (req, res) => {
     try{
         const customerData = {username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName,
             email: req.body.email, phoneNumber: req.body.phoneNumber};
         await axios.put(base_url + '/customers/' + req.params.id, customerData);
-        res.redirect("/");
+        res.redirect("/customers/");
     }catch (err){
         console.error(err);
         res.status(500).send('Error');
     }
 });
 
-app.get("/delete/:id", async (req, res) => {
+app.get("/customers/delete/:id", async (req, res) => {
     try{
         await axios.delete(base_url + '/customers/' + req.params.id);
-        res.redirect("/");
+        res.redirect("/customers/");
     }catch (err){
         console.error(err);
         res.status(500).send('Error');

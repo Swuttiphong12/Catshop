@@ -213,9 +213,9 @@ app.post('/customers' ,(req ,res) => {
 app.put('/customers/:id' , (req ,res) => {
     Customers.findByPk(req.params.id).then(customer => {
         if(!customer) {
-            res.status(404).send('Cat not found');
+            res.status(404).send('Customer not found');
         }else {
-            cat.update(req.body).then(() => {
+            customer.update(req.body).then(() => {
                 res.send(customer);
             }).catch(err => {
                 res.status(500).send(err);
@@ -225,6 +225,22 @@ app.put('/customers/:id' , (req ,res) => {
         res.status(500).send(err);
     });
 });
+
+// app.put('/cats/:id' , (req ,res) => {
+//     Cat.findByPk(req.params.id).then(cat => {
+//         if(!cat) {
+//             res.status(404).send('Cat not found');
+//         }else {
+//             cat.update(req.body).then(() => {
+//                 res.send(cat);
+//             }).catch(err => {
+//                 res.status(500).send(err);
+//             });
+//         }
+//     }).catch(err => {
+//         res.status(500).send(err);
+//     });
+// });
 
 app.delete('/customers/:id' ,(req ,res) => {
     Customers.findByPk(req.params.id).then(customer => {

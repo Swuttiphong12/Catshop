@@ -25,12 +25,12 @@
             <td><%= customers[i].phoneNumber %></td>
             <td>
                 <a href="/customer/<%= customers[i].customer_id %>">View</a>
-                <a href="/update/<%= customers[i].customer_id %>">Edit</a>
-                <a href="/delete/<%= customers[i].customer_id %>">Delete</a>
+                <a href="/customers/update/<%= customers[i].customer_id %>">Edit</a>
+                <a href="/customers/delete/<%= customers[i].customer_id %>">Delete</a>
             </td>
         </tr>
         <% } %>
     </table>
-    <a href="/create">Create New Customer</a>
+    <a href="/customers/create">Create New Customer</a>
 </body>
 </html>
