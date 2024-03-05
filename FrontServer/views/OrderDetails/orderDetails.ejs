@@ -10,15 +10,19 @@
     <h1>orderDetails</h1>
     <table>
         <tr>
+            <th>Order_id</th>
+            <th>Cat_id</th>
             <th>Quanity</th>
             <th>unitPrice</th>
-            
+
         </tr>
         <% for (var i = 0; i < orderDetails.length; i++) {%>
         <tr>
+            <td><%= orderDetails[i].order_id %></td>
+            <td><%= orderDetails[i].cat_id %></td>
             <td><%= orderDetails[i].quantity %></td>
             <td><%= orderDetails[i].unitPrice %></td>
-            
+
             <td>
                 <a href="/orderDetail/<%= orderDetails[i].detail_id %>">View</a>
                 <a href="/orderdetails/update/<%= orderDetails[i].detail_id %>">Edit</a>

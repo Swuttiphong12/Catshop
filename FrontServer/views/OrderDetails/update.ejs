@@ -3,34 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Cat</title>
+    <title>Update orderDetail</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
 </head>
 <body>
-    <h1>Update cat</h1>
+    <h1>Update orderDetail</h1>
     <form method="post" action="/orderdetails/update/<%= orderDetail.detail_id %>">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%= cat.name %>">
+        <label for="order_id">Order ID:</label>
+        <input type="text" id="order_id" name="order_id" value="<%= orderDetail.order_id %>">
         <br>
-        <label for="breed">Breed:</label>
-        <input type="text" id="breed" name="breed" value="<%= cat.breed %>">
+        <label for="cat_id">Cat id:</label>
+        <input type="text" id="cat_id" name="cat_id" value="<%= orderDetail.cat_id %>">
         <br>
-        <label for="age">Age:</label>
-        <input type="text" id="age" name="age" value="<%= cat.age %>">
+        <label for="quantity">Quanity:</label>
+        <input type="text" id="quantity" name="quantity" value="<%= orderDetail.quantity %>">
         <br>
-        <label for="color">Color:</label>
-        <input type="text" id="color" name="color" value="<%= cat.color %>">
-        <br>
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" value="<%= cat.price %>">
-        <br>
-        <label for="availability">Availability:</label>
-        <input type="text" id="availability" name="availability" value="<%= cat.availability %>">
+        <label for="unitPrice">unitPrice:</label>
+        <input type="text" id="unitPrice" name="unitPrice" value="<%= orderDetail.unitPrice %>">
         <br>
         <input type="submit" value="Update">
+
     </form>
-    <a href="/cat/<%= cat.cat_id%>">View</a>
-    <a href="/orderdetails/delete/<%= cat.cat_id%>">Delete</a>
+    <a href="/orderdetail/<%= orderDetail.detail_id%>">View</a>
+    <a href="/orderdetails/delete/<%= orderDetail.detail_id%>">Delete</a>
     <a href="/orderdetails/">Back to List</a>
 </body>
 </html>

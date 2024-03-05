@@ -7,9 +7,11 @@
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
 </head>
 <body>
-    <h1>Username<%= customer.username %></h1>
+    <h1>Username: <%= customer.username %></h1>
     <p>Firstname: <%= customer.firstName %></p>
     <p>Lastname: <%= customer.lastName %></p>
+    <p>Email: <%= customer.email %></p>
+    <p>Phonenumber: <%= customer.phoneNumber %></p>
     <a href="/customers/update/<%= customer.customer_id %>">Edit</a>
     <a href="/customers/delete/<%= customer.customer_id %>">Delete</a>
     <a href="/customers/">Back to List</a>

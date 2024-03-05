@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat</title>
+    <title>Order</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
 </head>
 <body>
-    <h1>Customer Id<%= order.customer_id %></h1>
+    <h1>Customer ID: <%= order.customer_id %></h1>
     <p>Order Date: <%= order.order_date %></p>
     <p>Total Amount: <%= order.total_amount %></p>
     <a href="/orders/update/<%= order.order_id %>">Edit</a>

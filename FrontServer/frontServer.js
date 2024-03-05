@@ -243,14 +243,14 @@ app.get("/orderdetail/:id", async (req, res) => {
 });
 
 app.get("/orderdetails/create", (req, res) => {
-    res.render("Cat/create");
+    res.render("OrderDetails/create");
 });
 
 app.post("/orderdetails/create", async (req, res) => {
     try{
-        const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
-                    color: req.body.color, price: req.body.price, availability: req.body.availability};
-        await axios.post(base_url + '/orderdetails/', data);
+        const detailData = {order_id: req.body.order_id, cat_id: req.body.cat_id,
+                    quantity: req.body.quantity, unitPrice: req.body.unitPrice};
+        await axios.post(base_url + '/orderdetails/', detailData);
         res.redirect("/orderdetails/");
     }catch (err){
         console.error(err);
@@ -271,9 +271,9 @@ app.get("/orderdetails/update/:id", async (req, res) => {
 
 app.post("/orderdetails/update/:id", async (req, res) => {
     try{
-        const data = {name: req.body.name, breed: req.body.breed, age: req.body.age,
-            color: req.body.color, price: req.body.price, availability: req.body.availability};
-        await axios.put(base_url + '/orderdetails/' + req.params.id, data);
+        const detailData = {order_id: req.body.order_id, cat_id: req.body.cat_id,
+            quantity: req.body.quantity, unitPrice: req.body.unitPrice};
+        await axios.put(base_url + '/orderdetails/' + req.params.id, detailData);
         res.redirect("/orderdetails/");
     }catch (err){
         console.error(err);

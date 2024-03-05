@@ -226,22 +226,6 @@ app.put('/customers/:id' , (req ,res) => {
     });
 });
 
-// app.put('/cats/:id' , (req ,res) => {
-//     Cat.findByPk(req.params.id).then(cat => {
-//         if(!cat) {
-//             res.status(404).send('Cat not found');
-//         }else {
-//             cat.update(req.body).then(() => {
-//                 res.send(cat);
-//             }).catch(err => {
-//                 res.status(500).send(err);
-//             });
-//         }
-//     }).catch(err => {
-//         res.status(500).send(err);
-//     });
-// });
-
 app.delete('/customers/:id' ,(req ,res) => {
     Customers.findByPk(req.params.id).then(customer => {
         if(!customer) {

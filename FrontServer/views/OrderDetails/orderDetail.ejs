@@ -7,7 +7,10 @@
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
 </head>
 <body>
-    <h1>Quanity<%= orderDetail.quantity %></h1>
+    <h1>orderDetail</h1>
+    <p>order_id: <%= orderDetail.order_id %></p>
+    <p>cat_id: <%= orderDetail.cat_id %></p>
+    <p>Quanity: <%= orderDetail.quantity %></p>
     <p>unitPrice: <%= orderDetail.unitPrice %></p>
     <a href="/orderdetails/update/<%= orderDetail.detail_id %>">Edit</a>
     <a href="/orderdetails/delete/<%= orderDetail.detail_id %>">Delete</a>
