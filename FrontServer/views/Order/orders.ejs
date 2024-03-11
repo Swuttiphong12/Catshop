@@ -61,15 +61,20 @@
     <table>
         <tr>
             <th>Customer Id</th>
-            <th>Order Date</th>
-            <th>Total Amount</th>
+            <th>Customer Name</th>
+            <!-- Catid,Catname เอาไปไว้ข้างในตอนกด view แล้ว -->
+            <!-- Order Date
+            Quanity
+            UnitPrice
+            Total Amount -->
             
         </tr>
         <% for (var i = 0; i < orders.length; i++) {%>
         <tr>
             <td><%= orders[i].customer_id %></td>
-            <td><%= orders[i].order_date %></td>
-            <td><%= orders[i].total_amount %></td>
+            <td></td>
+            <!-- <td><%= new Date(orders[i].order_date).toLocaleDateString('en-US') %></td> -->
+            <!-- <td><%= orders[i].total_amount %></td> -->
             <td>
                 <a href="/order/<%= orders[i].order_id %>">View</a>
                 <a href="/orders/update/<%= orders[i].order_id %>">Edit</a>

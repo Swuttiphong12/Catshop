@@ -85,7 +85,7 @@ const order = sequelize.define('order', {
         allowNull: false
     },
     order_date: {
-        type: Sequelize.DATE ,
+        type: Sequelize.DATEONLY ,
         allowNull: false
     },
     total_amount: {
