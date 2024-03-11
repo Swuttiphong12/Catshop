@@ -1,130 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers</title>
-    <!-- <link rel="stylesheet" href="../css/style.css"/> -->
-    <style>
-
-        body {
-        background-color: #f8e0ab;
-        margin: 0;
-        padding: 0;
-        }
-            /* Navbar Container */
-    .navbar {
-        overflow: hidden;
-        background-color: rgb(243, 156, 74);
-      }
-    
-      /* Navbar Links */
-      .navbar a {
-        float: left;
-        display: block;
-        color: #0e0c0cd3;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-        font-weight: bold; /* เพิ่ม bold */
-        font-size: 20px; /* เพิ่มขนาด */
-      }
-    
-      /* Navbar Links on Hover */
-      .navbar a:hover {
-        background-color: #ddd;
-        color: rgb(243, 156, 74);
-      }
-    
-      /* Clear floats */
-      .navbar::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-    
-      .bar {
-            background-color: #ddd;
-            height: 20px; /* กำหนดความสูงของแท่ง */
-            margin-top: 5px; /* ระยะห่างด้านบน */
-        }
-        </style>
-    <style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers</title>
+  <!-- <link rel="stylesheet" href="/FrontServer/css/navbar.css"/> -->
+  <style>
     body {
-    background-color: #f8e0ab;
-    margin: 0;
-    padding: 0;
+      background-color: #f8e0ab;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
-        /* Navbar Container */
-.navbar {
-    overflow: hidden;
-    background-color: rgb(243, 156, 74);
-  }
 
-  /* Navbar Links */
-  .navbar a {
-    float: left;
-    display: block;
-    color: #0e0c0cd3;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-weight: bold; /* เพิ่ม bold */
-    font-size: 20px; /* เพิ่มขนาด */
-  }
-
-  /* Navbar Links on Hover */
-  .navbar a:hover {
-    background-color: #ddd;
-    color: rgb(243, 156, 74);
-  }
-
-  /* Clear floats */
-  .navbar::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  .bar {
-        background-color: #ddd;
-        height: 20px; /* กำหนดความสูงของแท่ง */
-        margin-top: 5px; /* ระยะห่างด้านบน */
+    /* Navbar Container */
+    .navbar {
+      overflow: hidden;
+      background-color: rgb(243, 156, 74);
+      font-size: 18px;
+      font-weight: bold;
     }
-    </style>
+
+    /* Navbar Links */
+    .navbar a {
+      float: left;
+      display: block;
+      color: #0e0c0cd3;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    /* Navbar Links on Hover */
+    .navbar a:hover {
+      background-color: #ddd;
+      color: rgb(243, 156, 74);
+    }
+
+    /* Clear floats */
+    .navbar::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #333;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #333;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    /* Add New Cat Link */
+    .add-cat-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0e0c0cd3;
+      font-weight: bold;
+    }
+
+    /* Prevent th from changing color on hover */
+    th:hover {
+      background-color: transparent;
+      color: inherit;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="/cats">Cats</a>
-        <a href="/customers">Customers</a>
-        <a href="/orders">Orders</a>
-        <a href="/orderdetails">Orderdetails</a>
-      </div>
-    <h1>Customers</h1>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Phonenumber</th>
-        </tr>
-        <% for (var i = 0; i < customers.length; i++) {%>
-        <tr>
-            <td><%= customers[i].username %></td>
-            <td><%= customers[i].firstName %></td>
-            <td><%= customers[i].lastName %></td>
-            <td><%= customers[i].email %></td>
-            <td><%= customers[i].phoneNumber %></td>
-            <td>
-                <a href="/customer/<%= customers[i].customer_id %>">View</a>
-                <a href="/customers/update/<%= customers[i].customer_id %>">Edit</a>
-                <a href="/customers/delete/<%= customers[i].customer_id %>">Delete</a>
-            </td>
-        </tr>
-        <% } %>
-    </table>
-    <a href="/customers/create">Create New Customer</a>
+  <div class="navbar">
+    <a href="/cats">Cats</a>
+    <a href="/customers">Customers</a>
+    <a href="/orders">Orders</a>
+    <a href="/orderdetails">Orderdetails</a>
+  </div>
+  <h1>Customers</h1>
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Phonenumber</th>
+    </tr>
+    <% for (var i=0; i < customers.length; i++) {%>
+      <tr>
+        <td>
+          <%= customers[i].username %>
+        </td>
+        <td>
+          <%= customers[i].firstName %>
+        </td>
+        <td>
+          <%= customers[i].lastName %>
+        </td>
+        <td>
+          <%= customers[i].email %>
+        </td>
+        <td>
+          <%= customers[i].phoneNumber %>
+        </td>
+        <td>
+          <a href="/customer/<%= customers[i].customer_id %>">View</a>
+          <a href="/customers/update/<%= customers[i].customer_id %>">Edit</a>
+          <a href="/customers/delete/<%= customers[i].customer_id %>">Delete</a>
+        </td>
+      </tr>
+      <% } %>
+  </table>
+  <a href="/customers/create">Create New Customer</a>
 </body>
+
 </html>

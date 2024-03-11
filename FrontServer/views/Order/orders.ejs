@@ -6,18 +6,21 @@
     <title>Order</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
     <style>
-
-        body {
+      body {
         background-color: #f8e0ab;
         margin: 0;
         padding: 0;
-        }
-            /* Navbar Container */
-    .navbar {
+        font-family: Arial, sans-serif;
+      }
+  
+      /* Navbar Container */
+      .navbar {
         overflow: hidden;
         background-color: rgb(243, 156, 74);
+        font-size: 18px;
+        font-weight: bold;
       }
-    
+  
       /* Navbar Links */
       .navbar a {
         float: left;
@@ -26,29 +29,59 @@
         text-align: center;
         padding: 14px 20px;
         text-decoration: none;
-        font-weight: bold; /* เพิ่ม bold */
-        font-size: 20px; /* เพิ่มขนาด */
       }
-    
+  
       /* Navbar Links on Hover */
       .navbar a:hover {
         background-color: #ddd;
         color: rgb(243, 156, 74);
       }
-    
+  
       /* Clear floats */
       .navbar::after {
         content: "";
         clear: both;
         display: table;
       }
-    
-      .bar {
-            background-color: #ddd;
-            height: 20px; /* กำหนดความสูงของแท่ง */
-            margin-top: 5px; /* ระยะห่างด้านบน */
-        }
-        </style>
+  
+      /* Table Styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #333;
+      }
+  
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #333;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+  
+      tr:hover {
+        background-color: #ddd;
+      }
+  
+      /* Add New Cat Link */
+      .add-cat-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #0e0c0cd3;
+        font-weight: bold;
+      }
+  
+      /* Prevent th from changing color on hover */
+      th:hover {
+        background-color: transparent;
+        color: inherit;
+      }
+    </style>
 </head>
 <body>
     <div class="navbar">
