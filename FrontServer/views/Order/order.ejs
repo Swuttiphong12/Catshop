@@ -1,17 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
+    <style>
+        body {
+          background-color: #f8e0ab;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+        }
+    
+        /* Navbar Container */
+        .navbar {
+          overflow: hidden;
+          background-color: rgb(243, 156, 74);
+          font-size: 18px;
+          font-weight: bold;
+        }
+    
+        /* Navbar Links */
+        .navbar a {
+          float: left;
+          display: block;
+          color: #0e0c0cd3;
+          text-align: center;
+          padding: 14px 20px;
+          text-decoration: none;
+        }
+    
+        /* Navbar Links on Hover */
+        .navbar a:hover {
+          background-color: #ddd;
+          color: rgb(243, 156, 74);
+        }
+    
+        /* Clear floats */
+        .navbar::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+    
+        /* Table Styling */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 2px solid #333;
+        }
+    
+        th,
+        td {
+          padding: 10px;
+          text-align: center;
+          border: 1px solid #333;
+        }
+    
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+    
+        tr:hover {
+          background-color: #ddd;
+        }
+    
+        /* Add New Cat Link */
+        .add-cat-link {
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+          text-decoration: none;
+          color: #0e0c0cd3;
+          font-weight: bold;
+        }
+    
+        /* Prevent th from changing color on hover */
+        th:hover {
+          background-color: transparent;
+          color: inherit;
+        }
+      </style>
 </head>
+
 <body>
-    <h1>Customer ID: <%= order.customer_id %></h1>
-    <p>Order Date: <%= order.order_date %></p>
-    <p>Total Amount: <%= order.total_amount %></p>
-    <a href="/orders/update/<%= order.order_id %>">Edit</a>
-    <a href="/orders/delete/<%= order.order_id %>">Delete</a>
+    <table>
+        <h1>Customer ID: <%= order.customer_id %></h1>
+        <tr>
+            <th>Customer Id</th>
+            <th>Customer Name</th>
+            <th>CatID</th>
+            <th>Catname</th>
+            <th>Order Date</th>
+            <th>Quanity</th>
+            <th>UnitPrice</th>
+            <th>Total Amount</th>
+        </tr>
+        <% for (var i = 0; i < order.length; i++) {%>
+            <tr>
+                <td><%= orders[i].customer_id %></td>
+                <td></td>
+                <!-- <td><%= new Date(orders[i].order_date).toLocaleDateString('en-US') %></td>
+                <td><%= orders[i].total_amount %></td> -->
+            </tr>
+            <% } %>
+    </table>
     <a href="/orders/">Back to List</a>
 </body>
+
 </html>
