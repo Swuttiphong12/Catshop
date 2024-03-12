@@ -157,13 +157,19 @@ app.get("/customers/delete/:id", async (req, res) => {
 });
 
 //Order Table
+
 app.get("/orders/", async (req, res) => {
-    try{
-        const response = await axios.get(base_url + '/orders');
-        res.render("Order/orders", {orders: response.data});
-    }catch (err){
+    try {
+        const ordersResponse = await axios.get(base_url + '/orders/');
+        const customersResponse = await axios.get(base_url + '/customers/');
+
+        const orders = ordersResponse.data;
+        const customers = customersResponse.data;
+
+        res.render("Order/orders", { orders, customers });
+    } catch (err) {
         console.error(err);
-        res.status(500).send('Error')
+        res.status(500).send('Error');
     }
 });
 
