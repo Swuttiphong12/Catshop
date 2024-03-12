@@ -103,7 +103,7 @@
   <% for (let i = 0; i < orders.length; i++) { %>
     <% let customer = customers.find(c => c.customer_id === orders[i].customer_id); %>
     <tr>
-      <td><%= orders[i].order_id %></td>
+      <td><%= orders[i].order_id %></td> 
       <td><%= orders[i].customer_id %></td>
       <td><%= customer ? customer.firstName : 'Unknown' %></td>
       <td><%= new Date(orders[i].order_date).toLocaleDateString('en-US') %></td>

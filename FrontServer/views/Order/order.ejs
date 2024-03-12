@@ -86,27 +86,30 @@
 </head>
 
 <body>
-    <table>
-        <h1>Customer ID: <%= order.customer_id %></h1>
-        <tr>
-            <th>Customer Id</th>
-            <th>Customer Name</th>
-            <th>CatID</th>
-            <th>Catname</th>
-            <th>Order Date</th>
-            <th>Quanity</th>
-            <th>UnitPrice</th>
-            <th>Total Amount</th>
-        </tr>
-        <% for (var i = 0; i < order.length; i++) {%>
-            <tr>
-                <td><%= orders[i].customer_id %></td>
-                <td></td>
-                <!-- <td><%= new Date(orders[i].order_date).toLocaleDateString('en-US') %></td>
-                <td><%= orders[i].total_amount %></td> -->
-            </tr>
-            <% } %>
-    </table>
+  <table>
+    <h1>Order ID: <%= order.order_id %></h1>
+    <tr>
+      <th>Customer Id</th>
+      <th>Customer Name</th>
+      <th>CatID</th>
+      <th>Catname</th>
+      <th>Order Date</th>
+      <th>Quanity</th>
+      <th>UnitPrice</th>
+      <th>Total Amount</th>
+    </tr>
+    <% for (let i = 0; i < order.length; i++) { %>
+      <tr>
+        <td>
+          <a href="/order/<%= order[i].order_id %>">View</a>
+          <a href="/orders/update/<%= order[i].order_id %>">Edit</a>
+          <a href="/orders/delete/<%= order[i].order_id %>">Delete</a>
+        </td>
+      </tr>
+    <% } %>
+  </table>
+  
+
     <a href="/orders/">Back to List</a>
 </body>
 
