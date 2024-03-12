@@ -175,22 +175,30 @@ app.get("/orders/", async (req, res) => {
 
 app.get("/order/:id", async (req, res) => {
     try{
-        const response = await axios.get(base_url + '/orders/' + req.params.id);
-        res.render("Order/order", { order: response.data});
+        const ordersresponse = await axios.get(base_url + '/orders/' + req.params.id);
+        const oderdetail = await axios.get(base_url + '/orderDetailss/' + req.params.id);
+        const customersResponse = await axios.get(base_url + '/customers/');
+        const catResponse = await axios.get(base_url + '/cats/');
+
+
+        res.render("Order/order", { order: ordersresponse.data , customers: customersResponse.data ,oderdetails: oderdetail.data ,cats: catResponse.data});
     }catch (err){
         console.error(err);
-        res.status(500).send('Error');
+        res.status(500).send('ข้อมูลของ Table OrderDetail อาจไม่มีทำให้ไม่สามารถแสดงผลได้!!');
     }
 });
 
-app.get("/orders/create", (req, res) => {
-    res.render("Order/create");
+app.get("/orders/create", async (req, res) => {
+    const order = await axios.get(base_url + '/orders/');
+    res.render("Order/create" , { order: order.data});
 });
 
 app.post("/orders/create", async (req, res) => {
     try{
         const orderData = {customer_id: req.body.customer_id, order_date: req.body.order_date, total_amount: req.body.total_amount};
         await axios.post(base_url + '/orders/', orderData);
+        const oderdetail = {order_id: req.body.order_id,cat_id: req.body.cat_id, quantity: req.body.quantity, unitPrice: req.body.unitPrice};
+        await axios.post(base_url + '/orderDetails/', oderdetail);
         res.redirect("/orders/");
     }catch (err){
         console.error(err);
@@ -223,6 +231,7 @@ app.post("/orders/update/:id", async (req, res) => {
 app.get("/orders/delete/:id", async (req, res) => {
     try{
         await axios.delete(base_url + '/orders/' + req.params.id);
+        await axios.delete(base_url + '/orderDetails/' + req.params.id);
         res.redirect("/orders/");
     }catch (err){
         console.error(err);

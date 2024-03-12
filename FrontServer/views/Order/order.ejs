@@ -98,15 +98,27 @@
       <th>UnitPrice</th>
       <th>Total Amount</th>
     </tr>
-    <% for (let i = 0; i < order.length; i++) { %>
+    <tr>
+   <td><%= order.order_id %></td>
+   <td><%= customers[order.customer_id-1].firstName %></td>
+   
+   <td><%= cats[oderdetails.cat_id -1].cat_id %></td>
+   <td><%= cats[oderdetails.cat_id -1].name %></td>
+   <td><%= new Date(order.order_date).toLocaleDateString('en-US')  %></td>
+   <td><%= oderdetails.quantity %></td>
+   <td><%= oderdetails.unitPrice %></td>
+   <td><%= order.total_amount %></td>
+  </tr>
+    <!-- <% for (let i = 0; i < order.length; i++) { %>
       <tr>
+        <%=order[i].order_date  %>
         <td>
           <a href="/order/<%= order[i].order_id %>">View</a>
           <a href="/orders/update/<%= order[i].order_id %>">Edit</a>
           <a href="/orders/delete/<%= order[i].order_id %>">Delete</a>
         </td>
       </tr>
-    <% } %>
+    <% } %> -->
   </table>
   
 

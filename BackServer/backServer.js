@@ -77,7 +77,7 @@ const Customers = sequelize.define('customer', {
 const order = sequelize.define('order', {
     order_id: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true
     },
     customer_id: {
@@ -102,7 +102,7 @@ const OrderDetails = sequelize.define('orderDetails', {
     },
     order_id: {
         type: Sequelize.INTEGER ,
-        allowNull: false
+        allowNull: true
     },
     cat_id: {
         type: Sequelize.INTEGER ,
@@ -324,6 +324,21 @@ app.get('/orderDetails/:id' ,(req,res) => {
     });
 });
 
+app.get('/orderDetailss/:id' ,(req,res) => {
+    OrderDetails.findOne({ where: { order_id: req.params.id } }).then(orderDetails => {
+        if(!orderDetails) {
+            res.status(404).send('OrderDetail not found');
+        }else {
+            res.json(orderDetails);
+        }
+    }).catch (err => {
+        res.status(500).send(err);
+    });
+});
+
+
+
+
 app.post('/orderDetails' ,(req ,res) => {
     OrderDetails.create(req.body).then(orderDetails => {
         res.send(orderDetails);
@@ -354,6 +369,7 @@ app.delete('/orderDetails/:id' ,(req ,res) => {
             res.status(404).send('OrderDetail not found');
         }else {
             orderDetails.destroy().then(() => {
+                
                 res.send({});
             }).catch(err => {
                 res.status(500).send(err);

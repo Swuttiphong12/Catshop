@@ -5,7 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat</title>
     <!-- <link rel="stylesheet" href="../css/style.css"/> -->
-    
+    <style>
+        /* Set font family and size for the whole page */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            background-color: rgb(240, 178, 121);
+        }
+
+        /* Center the main heading */
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2C3E50;
+        }
+
+        /* Style the links */
+        a {
+            display: inline-block;
+            margin: 10px;
+            color: #2C3E50;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom-color 0.2s;
+        }
+    </style>
 </head>
 <body>
     <h1>Username: <%= customer.username %></h1>
